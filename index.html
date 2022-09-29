@@ -20,9 +20,10 @@
       <!-- 头部区域（可配合layui 已有的水平导航） -->
       <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item layui-hide layui-show-md-inline-block">
-          <a href="javascript:;">
+          <a href="javascript:;" class="userInfo">
             <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"
               class="layui-nav-img">
+              <span class="text-avatar">A</span>
             个人中心
           </a>
           <dl class="layui-nav-child">
@@ -42,6 +43,12 @@
 
     <div class="layui-side layui-bg-black">
       <div class="layui-side-scroll">
+        <div class="userInfo">
+          <img src="//tva1.sinaimg.cn/crop.0.0.118.118.180/5db11ff4gw1e77d3nqrv8j203b03cweg.jpg"
+            class="layui-nav-img">
+          <span class="text-avatar">A</span>  
+          <span id="welcome">欢迎丁真</span>
+        </div>
         <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
         <ul class="layui-nav layui-nav-tree" lay-shrink="all">
           <li class="layui-nav-item layui-this">
@@ -91,7 +98,7 @@
       我测你们码
     </div>
   </div>
-  <script src="./layui/layui.js"></script>
+  <script src="./assets/lib/layui/layui.all.js"></script>
   <script>
     //JS 
     layui.use(['element', 'layer', 'util'], function () {
@@ -121,6 +128,9 @@
     });
   </script>
   <script src="./../assets/lib/layui/layui.all.js"></script>
+  <script src="./assets/lib/jquery.js"></script>
+  <script src="./assets/js/baseApi.js"></script>
+  <script src="./assets/js/index.js"></script>
 </body>
 
 </html>
