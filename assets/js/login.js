@@ -31,7 +31,7 @@ $(function () {
     e.preventDefault()
     $.ajax({
       method: 'POST',
-      url: `${baseUrl}/api/reguser`,
+      url: `/api/reguser`,
       data: {
         username: $('#form_reg [name=username]').val(),
         password: $('#form_reg [name=password]').val(), 
@@ -50,7 +50,7 @@ $(function () {
     e.preventDefault()
     $.ajax({
       type:'POST',
-      url:`${baseUrl}/api/login`,
+      url:`/api/login`,
       data:$(this).serialize(),
       success(res){
         // 把请求回来的token参数存到本地，并且跳转到index页面
