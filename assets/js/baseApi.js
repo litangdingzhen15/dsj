@@ -5,4 +5,9 @@ $.ajaxPrefilter(function (options) {
       Authorization: localStorage.getItem('token') || ''
     }
   }
+  options.complete = function(res){
+    if (res.responseJSON.status == 1) {
+      location.href = 'login.html'
+    }
+  }
 })

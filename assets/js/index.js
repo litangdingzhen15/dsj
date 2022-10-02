@@ -24,10 +24,11 @@ function getUserInfo() {
       }
       renderAvatar(res.data)
     },
-    
-    error(err){
-      console.log(123)
-    }
+    // complete:function(res){
+    //   if (res.responseJSON.status == 1) {
+    //     location.href = 'login.html'
+    //   }
+    // }
   })
 }
 
