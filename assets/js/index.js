@@ -40,6 +40,7 @@ function renderAvatar(user) {
   if (user.user_pic !== null) {
     $('.layui-nav-img').attr('src', user.user_pic).show()
     $('.text-avatar').hide()
+    $('.layui-nav-img').hide()
   } 
   // 否则头像隐藏，显示文字
   else {
