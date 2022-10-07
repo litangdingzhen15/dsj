@@ -36,7 +36,10 @@
       </table>
     </div>
   </div>
+
+  <!-- 调用模板引擎 --> 
   <script type="text/html" id="tpl-table">
+    <!-- 把请求的数据中的属性填到对应表格内 -->
     {{each data}}
     <tr>
       <td>{{$value.name}}</td>

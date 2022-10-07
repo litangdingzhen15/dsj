@@ -21,10 +21,10 @@ $(function () {
   }
 
   const q = {
-    pagenum: 1,
-    pagesize: 2,
-    cate_id: '',
-    state: ''
+    pagenum: 1, //当前页码值（表示当前是第几页）
+    pagesize: 2, //当前每页显示多少条
+    cate_id: '', //当前选择的文章分类
+    state: '' //当前文章所处的状态，可选值：已发布，操作 都是字符串
   }
 
   initTable()
