@@ -6,7 +6,7 @@ $(function () {
   initEditor()
   function initCate() {
     $.ajax({
-      type: 'POST',
+      type: 'GET',
       url: '/my/article/cates',
       success(res) {
         if (res.status !== 0) {
@@ -31,24 +31,31 @@ $(function () {
   // 3. 初始化裁剪区域
   $image.cropper(options)
 
-
-  $('$btnChooseImage').on('click', function () {
+  // 选择封面按钮点击的时候，让隐藏的文件选择框模拟点击
+  $('#btnChooseImage').on('click', function () {
     $('#coverFile').click()
   })
 
+  // 文件有上传时，拿到选择的图片
   $('#coverFile').on('change', function (e) {
-    const files = e.target.files()
+    let files = e.target.files
+    // 如果没有文件，returen
     if (files.length === 0) {
       return
     }
+    // 生成图片的url地址
     var newImgURL = URL.createObjectURL(files[0])
+    // 重新设定封面
     $image
       .cropper('destroy')      // 销毁旧的裁剪区域
       .attr('src', newImgURL)  // 重新设置图片路径
       .cropper(options)        // 重新初始化裁剪区域
   })
 
+  // 定义文章的发布状态
   let art_state = '已发布'
+
+  // 存为草稿按钮点击时候，状态变为草稿
   $('#btnSave2').on('click', function () {
     art_state = '草稿'
   })
@@ -64,12 +71,24 @@ $(function () {
       })
       .toBlob(function (blob) {       // 将 Canvas 画布上的内容，转化为文件对象
         // 得到文件对象后，进行后续的操作
-        fd.append('cover_img',blob)
+        fd.append('cover_img', blob)
         publishArticle(fd)
       })
-
-    fd.forEach(function (v, k) {
-      console.log(v, k)
-    })
   })
+  function publishArticle(fd) {
+    $.ajax({
+      type: 'POST',
+      url: '/my/article/add',
+      data: fd,
+      contentType:false,
+      processData:false,
+      success(res){
+        if (res.status !== 0) {
+          return layer.msg('发布文章失败')
+        }
+        layer.msg('发布文章成功')
+        location.href = 'art_list.html'
+      }
+    })
+  }
 })

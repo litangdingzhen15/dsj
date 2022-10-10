@@ -88,17 +88,20 @@ $(function () {
     })
   }
 
-  $('tbody').on('click','.btn-delete',function(){
-    layer.confirm('确定要删除吗?', {icon: 3, title:'提示'}, function(index){
+  $('tbody').on('click', '.btn-delete', function () {
+    const id = $(this).attr('data-id')
+    layer.confirm('确定要删除吗?', { icon: 3, title: '提示' }, function (index) {
       const len = $('.btn-delete').length
-      const id = $(this).attr('data-id')
+      
+      
       $.ajax({
-        type:'GET',
-        url:'/my/article/delete/' +  id,
-        success(res){
-          if (res.status !== 0 ) {
+        type: 'GET',
+        url: `/my/article/delete/${id}`,
+        success(res) {
+          if (res.status !== 0) {
             return layer.msg('删除文章失败')
           }
+          console.log(res)
           layer.msg('删除文章成功')
           if (len === 1) {
             q.pagenum = q.pagenum === 1 ? 1 : q.pagenum - 1
@@ -106,7 +109,7 @@ $(function () {
           initTable()
         }
       })
-      
+
       layer.close(index);
     })
   })
